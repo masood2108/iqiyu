@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+        .title {
+            text-align: center;
+        }
+
+        .section-info {
+            margin: 20px 0;
+        }
+        .section-info label {
+            display: block;
+            font-weight: bold;
+        }
+        .question {
+            margin-bottom: 10px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .answer-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .answer-option {
+            width: 48%;
+        }
+        .submit-button {
+            margin: 0 auto;
+            display: block;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .thank-you {
+            font-size: 24px;
+            text-align: center;
+            display: none;
+        }
+        .iq-score-table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .iq-score-table th, .iq-score-table td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+        .section-info {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .section-info label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .section-info input, .section-info select {
+            width: 99%;
+            padding: 10px;
+            border: 0.5px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz">
+        <h1 class="title">IQ Test</h1>
+        <form action="/submit" method="post" id="iq-test-form">
+            <div class="section-info">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="section-info">
+                <label for="branch">Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="cse">CSE</option>
+                    <option value="cse-ds">CSE-DS</option>
+                    <option value="cse-aiml">CSE-AIML</option>
+                    <option value="cse-aids">CSE-AIDS</option>
+                    <option value="ece">ECE</option>
+                    <option value="eee">EEE</option>
+                    <option value="eie">EIE</option>
+                    <option value="civil">Civil</option>
+                    <option value="mechanical">Mechanical</option>
+                </select>
+            </div>
+            <div class="section-info">
+                <label for="section">Section:</label>
+                <select id="section" name="section" required>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                </select>
+            </div>
+
+            <!-- Questions and Answer Choices -->
+            <div class="question">
+                <p>1. 7 9 5 11 4 15 12 7 13 8 11 ?</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q2" value="1"> 8
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q2" value="2"> 10
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q2" value="3"> 11
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q2" value="4"> 13
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. 121, 144, 169, 196, ?</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q3" value="1"> 225
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q3" value="2"> 230
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q3" value="3"> 275
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q3" value="4"> 221
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. Mary is 16 years old. She is 4 times older than her brother. How old will Mary be when she is twice his age?</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q4" value="1"> That's impossible
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q4" value="2"> 20
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q4" value="3"> 24
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q4" value="4"> 28
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. Which fraction is the biggest?</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q5" value="1"> 3/5
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q5" value="2"> 5/8
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q5" value="3"> 1/2
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q5" value="4"> 4/7
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. SUNDAY MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY SATURDAY SUNDAY</p>
+                <p>Which day is three days before the day immediately following the day two days before the day three days after the day immediately before Friday?</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q6" value="1"> Tuesday
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q6" value="2"> Wednesday
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q6" value="3"> Thursday
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q6" value="4"> Sunday
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. Alfred buys an old scooter for Rs. 4700 and spends Rs. 800 on its repairs. If he sells the scooter for Rs. 5800, his gain percent is:</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q7" value="1"> 4%
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q7" value="2"> 5%
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q7" value="3"> 10%
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q7" value="4"> 12%
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. If selling price is doubled, the profit triples. Find the profit percent.</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q8" value="1"> 66 2/3
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q8" value="2"> 100
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q8" value="3"> 105 1/3
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q8" value="4"> 120
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. Statements: Prime age school-going children in urban India have now become avid as well as more regular viewers of television, even in households without a TV. As a result there has been an alarming decline in the extent of readership of newspapers.</p>
+                <p>Conclusions:</p>
+                <p>1. Method of increasing the readership of newspapers should be devised.</p>
+                <p>2. A team of experts should be sent to other countries to study the impact of TV on the readership of newspapers.</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q9" value="1"> Only conclusion I follows
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q9" value="2"> Only conclusion II follows
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q9" value="3"> Either I or II follows
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q9" value="4"> Neither I nor II follows
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q9" value="5"> Both I and II follow
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9. Blueberries cost more than strawberries.</p>
+                <p>Blueberries cost less than raspberries.</p>
+                <p>Raspberries cost more than strawberries and blueberries.</p>
+                <p>If the first two statements are true, the third statement is:</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q10" value="true"> true
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q10" value="false"> false
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q10" value="uncertain"> uncertain
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. All the trees in the park are flowering trees.</p>
+                <p>Some of the trees in the park are dogwoods.</p>
+                <p>All dogwoods in the park are flowering trees.</p>
+                <p>If the first two statements are true, the third statement is:</p>
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <input type="radio" name="q11" value="true"> true
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q11" value="false"> false
+                    </div>
+                    <div class="answer-option">
+                        <input type="radio" name="q11" value="uncertain"> uncertain
+                    </div>
+                </div>
+            </div>
+            <div class="question">
+                <p>Select the figure that is missing from the collection below:</p>
+                <img class="answer-image" src="q1.jpeg" alt="Question 2">
+                <div class="answer-options">
+                    <div class="answer-option">
+                        <img class="answer-image" src="q1-a.jpeg" alt="Option 1">
+                        <input type="radio" name="q12" value="1"> Option 1
+                    </div>
+                    <div class="answer-option">
+                        <img class="answer-image" src="q1-b.jpeg" alt="Option 2">
+                        <input type="radio" name="q12" value="2"> Option 2
+                    </div>
+                    <div class="answer-option">
+                        <img class="answer-image" src="q1-c.jpeg" alt="Option 2">
+                        <input type="radio" name="q12" value="3"> Option 3
+                    </div>
+                    <div class="answer-option">
+                        <img class="answer-image" src="q1-d.jpeg" alt="Option 2">
+                        <input type="radio" name="q12" value="4"> Option 4
+                    </div>
+                </div>
+            </div>
+
+            <form action="/submit" method="post" id="iq-test-form" onsubmit="calculateScore();">
+                <div id="result" class="thank-you">
+                    <h2>Thank you for taking the IQ Test, <span id="student-name"></span>!</h2>
+                    <p>Correct Answers: <span id="correct-answers"></span>/10</p>
+                    <p>Time Taken: <span id="time-taken">00:00</span></p>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+            
+              
+
+            <!-- IQ Score Range Table -->
+            <table class="iq-score-table">
+                <tr>
+                    <th>Number Correct</th>
+                    <th>IQ Category</th>
+                    <th>Approximate IQ Score</th>
+                    <th>Percent of Test Takers in this Range</th>
+                </tr>
+                <tr>
+                    <td>0 to 2</td>
+                    <td>Low</td>
+                    <td>0 – 80</td>
+                    <td>7.40%</td>
+                </tr>
+                <tr>
+                    <td>3 to 4</td>
+                    <td>Low Average</td>
+                    <td>81 – 90</td>
+                    <td>13.10%</td>
+                </tr>
+                <tr>
+                    <td>5 to 6</td>
+                    <td>Average</td>
+                    <td>91 to 110</td>
+                    <td>48.80%</td>
+                </tr>
+                <tr>
+                    <td>7 to 8</td>
+                    <td>High Average</td>
+                    <td>111 – 120</td>
+                    <td>21.90%</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Superior</td>
+                    <td>121 – 130</td>
+                    <td>5.70%</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Very Superior</td>
+                    <td>Over 130</td>
+                    <td>3.10%</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        let timerInterval;
+        const startTime = new Date();
+        let correctAnswers = 0;
+
+        function updateTimer() {
+            const currentTime = new Date();
+            const elapsedTime = currentTime - startTime;
+            const timeTakenSpan = document.getElementById("time-taken");
+            const minutes = Math.floor(elapsedTime / 60000);
+            const seconds = Math.floor((elapsedTime % 60000) / 1000);
+            timeTakenSpan.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        timerInterval = setInterval(updateTimer, 1000);
+
+        function calculateScore() {
+            const endTime = new Date();
+            const elapsedTime = endTime - startTime;
+            clearInterval(timerInterval);
+
+            const form = document.getElementById("iq-test-form");
+            const name = form.name.value;
+            const branch = form.branch.value;
+            const section = form.section.value;
+
+            // Calculate scores for each question
+            const answers = {
+                q2: parseInt(form.q2.value),
+                q3: parseInt(form.q3.value),
+                q4: parseInt(form.q4.value),
+                q5: parseInt(form.q5.value),
+                q6: parseInt(form.q6.value),
+                q7: parseInt(form.q7.value),
+                q8: parseInt(form.q8.value),
+                q9: parseInt(form.q9.value),
+                q10: form.q10.value === "true",
+                q11: form.q11.value ==="true",
+                q12: parseInt(form.q12.value),
+
+            };
+
+            // Calculate the number of correct answers
+            correctAnswers = Object.values(answers).filter(answer => answer === true || answer === 1).length;
+
+            const resultDiv = document.getElementById("result");
+            const correctAnswersSpan = document.getElementById("correct-answers");
+            const studentNameSpan = document.getElementById("student-name");
+            
+
+            correctAnswersSpan.innerText = correctAnswers;
+            studentNameSpan.innerText = name;
+            resultDiv.style.display = "block";
+
+            const timeTakenSpan = document.getElementById("time-taken");
+            const minutes = Math.floor(elapsedTime / 60000);
+            const seconds = Math.floor((elapsedTime % 60000) / 1000);
+            timeTakenSpan.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
